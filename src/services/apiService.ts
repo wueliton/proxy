@@ -1,11 +1,13 @@
 import axios from "axios";
 
 export const apiService = axios.create({
-  responseType: "arraybuffer",
-  responseEncoding: "binary",
+  responseType: "document",
+  responseEncoding: "utf-8",
   validateStatus: (status) => true,
   headers: {
+    "Accept-Language": "pt",
+    "Cache-Control": "max-age=0",
     "User-Agent":
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3694.0 Safari/537.36 Chrome-Lighthouse",
+      "Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.2704.64 Safari/537.36",
   },
 });

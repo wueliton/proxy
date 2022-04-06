@@ -24,8 +24,7 @@ app.get("/search", async (req, res) => {
   const { data } = await apiService.get(
     `https://google.com/search?q=${q}&${queryParams}&hl=pt-BR&`
   );
-  const html = iconv.decode(data, "ISO-8859-1");
-  res.send(html);
+  res.send(data);
 });
 
 app.listen(port, () => {
