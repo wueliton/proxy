@@ -16,8 +16,13 @@ app.get("/", (req, res) => {
 
 app.get("/search", async (req, res) => {
   const { q, ...props } = req.query;
+  const queryParams = !!props
+    ? Object.keys(props)
+        .map((key) => `${key}=${props[key]}`)
+        .join("&")
+    : "";
   const { data } = await apiService.get(
-    `https://google.com/search?q=${q}&${props}&hl=pt-BR&`
+    `https://google.com/search?q=${q}&${queryParams}&hl=pt-BR&`
   );
   const html = iconv.decode(data, "ISO-8859-1");
   res.send(html);
