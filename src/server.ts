@@ -14,11 +14,10 @@ app.get("/", (req, res) => {
   res.json({ body: "Success" });
 });
 
-app.get("/search/:search", async (req, res) => {
-  const { search } = req.params;
-  console.log(search);
+app.get("/search", async (req, res) => {
+  const { q, ...props } = req.query;
   const { data } = await apiService.get(
-    `https://google.com/search?q=${encodeURI(search)}&hl=pt-BR&`
+    `https://google.com/search?q=${q}&${props}&hl=pt-BR&`
   );
   const html = iconv.decode(data, "ISO-8859-1");
   res.send(html);
