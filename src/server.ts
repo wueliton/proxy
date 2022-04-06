@@ -1,13 +1,14 @@
 import express, { Request } from "express";
 import { apiService } from "./services/apiService";
 import iconv from "iconv-lite";
+import "dotenv/config";
 
 interface Params {
   search: string;
 }
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 app.get("/", (req, res) => {
   res.json({ body: "Success" });
